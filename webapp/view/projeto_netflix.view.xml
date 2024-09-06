@@ -1,0 +1,79 @@
+<mvc:View
+    controllerName="projetonetflix.controller.projeto_netflix"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <subHeader>
+            <Toolbar id="idToolbar">
+                <content>
+                    <Link
+                        id="idIncioLink"
+                        text="Início"
+                        press="onInicioLinkPress"
+                    />
+                    <Link
+                        id="idFilmesLink"
+                        text="Filmes"
+                    />
+                    <Link
+                        id="idSriesLink"
+                        text="Séries"
+                    />
+                    <ToolbarSpacer id="idToolbarSpacer" />
+                    <SearchField
+                        id="idSearchField"
+                        width="30%"
+                        search="onBuscarDados"
+                    />
+                </content>
+            </Toolbar>
+        </subHeader>
+        <content>
+            <layout:Grid
+                id="idTitlesGrid"
+                content="{APINetflix>/titles}"
+            >
+                <!-- Mostrar os modelos do arquivo netflix (todos)-->
+                <VBox
+                    id="idVBox"
+                    class="preencherBoxPreto"
+                >
+                    <Image
+                        id="idImage"
+                        src="{APINetflix>jawSummary/backgroundImage/url}"
+                        height="100%"
+                        width="100%"
+                    />
+                    <Image
+                        id="id1Image"
+                        src="{APINetflix>jawSummary/logoImage/url}"
+                        height="50%"
+                        width="50%"
+                        class="marginLogo"
+                    />
+                    <Text
+                        id="idTitleText"
+                        text="{APINetflix>jawSummary/title}"
+                        class="textoBranco espacoRodape marginLogo "
+                    />
+                    <Text
+                        id="idSynopsisText"
+                        text="{APINetflix>jawSummary/synopsis}"
+                        class="textoBranco espacoRodape marginLogo"
+                    />
+                    <Text
+                        id="idNameGeneroText"
+                        text="{APINetflix>jawSummary/genres/2/name}"
+                        class="textoBranco espacoRodape marginLogo"
+                    />
+                </VBox>
+            </layout:Grid>
+        </content>
+    </Page>
+</mvc:View>
